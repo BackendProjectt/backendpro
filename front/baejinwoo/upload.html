@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ReRead - 책등록</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        background: #f9f9f9;
+      }
+      header,
+      footer {
+        background: #004080;
+        color: white;
+        text-align: center;
+        padding: 1em;
+      }
+      nav {
+        background: #e0e0e0;
+        padding: 0.5em;
+        text-align: center;
+      }
+      nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #004080;
+        font-weight: bold;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 2em;
+        background: white;
+        margin-top: 2em;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      label {
+        display: block;
+        margin-top: 1em;
+      }
+      input[type="text"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.5em;
+        margin-top: 0.5em;
+      }
+      input[type="submit"] {
+        margin-top: 2em;
+        width: 100%;
+        padding: 0.7em;
+        background: #004080;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ReRead</h1>
+    </header>
+
+    <nav>
+      <a href="main.html">메인</a>
+      <a href="category.html">카테고리</a>
+      <a href="mypage.html">마이페이지</a>
+      <a href="board.html">게시판</a>
+      <a href="login.html">로그인</a>
+      <a href="upload.html">책 등록</a>
+    </nav>
+
+    <div class="container">
+      <h2>책 등록</h2>
+      <form action="#" method="post">
+        <label for="title">책 제목</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="author">저자</label>
+        <input type="text" id="author" name="author" required />
+
+        <label for="publisher">출판사</label>
+        <input type="text" id="publisher" name="publisher" />
+
+        <label for="price">가격 (원)</label>
+        <input type="number" id="price" name="price" required />
+
+        <label for="condition">책 상태</label>
+        <select id="condition" name="condition">
+          <option value="최상">최상</option>
+          <option value="상">상</option>
+          <option value="중">중</option>
+          <option value="하">하</option>
+        </select>
+
+        <label for="description">상세 설명</label>
+        <textarea id="description" name="description" rows="5"></textarea>
+
+        <input type="submit" value="책 등록" />
+      </form>
+    </div>
+
+    <footer>&copy; ReRead</footer>
+  </body>
+</html>
