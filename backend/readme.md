@@ -1,2 +1,2 @@
 # 벡엔드
-![Image](https://github.com/user-attachments/assets/45fe53a0-d237-479e-9626-c8ed1919519e)
+![Image](https://github.com/user-attachments/assets/8957f46a-c9b2-4f7c-bf92-674061e8f434)
