@@ -3,52 +3,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>로그인 - ReRead</title>
+    <title>로그인</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
         }
         .login-container {
-            width: 400px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 360px;
+            background: #fff;
+            padding: 34px 28px 28px 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
         }
         h2 {
-            margin-bottom: 20px;
             text-align: center;
+            color: #007bff;
+            font-weight: bold;
+            font-size: 26px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
         }
-        input[type="email"], input[type="password"] {
+        .form-group {
+            margin-bottom: 17px;
+        }
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #222;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 11px 12px;
+            border: 1.5px solid #d6dbe3;
+            border-radius: 5px;
+            background: #fafcff;
+            box-sizing: border-box;
+            transition: border 0.2s, box-shadow 0.2s;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.03);
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.08);
         }
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px 0;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
             cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 7px rgba(0,123,255,0.06);
+            letter-spacing: 1px;
+            transition: background 0.13s;
         }
         button:hover {
             background-color: #0056b3;
         }
         .error {
-            color: red;
+            color: #e03333;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -56,14 +88,18 @@
 
     <div class="login-container">
         <h2>로그인</h2>
-        <% 
-            if (request.getParameter("error") != null) {
-        %>
+        <% if (request.getParameter("error") != null) { %>
             <div class="error">로그인에 실패하였습니다. 다시 시도해주세요.</div>
         <% } %>
         <form action="login" method="post">
-            <input type="email" name="email" placeholder="이메일" required>
-            <input type="password" name="password" placeholder="비밀번호" required>
+            <div class="form-group">
+                <label for="userid">유저 ID</label>
+                <input type="text" id="userid" name="userid" placeholder="아이디" required>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호" required>
+            </div>
             <button type="submit">로그인</button>
         </form>
     </div>
