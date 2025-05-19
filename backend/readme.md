@@ -10,11 +10,11 @@
 ![Image](https://github.com/user-attachments/assets/0c269b7b-7657-4f2b-a7e7-9413f25016d8)
 
 ## signup
-### 회원가입에 정보를 적고 회원가
+### 회원가입에 정보를 적고 회원가입
 ![Image](https://github.com/user-attachments/assets/3adfa89e-55e1-41ba-8ca5-8030278e4a8a)
 
 ## mypage
-### 내 회원정보 수정 가능(가입일, 아이디 read only 수정불가). 자신이 판매중인 책 확인 가능(책 제목, 등록일, 삭제). 자신이 게시판에 작성한 글 확인 가
+### 내 회원정보 수정 가능(가입일, 아이디 read only 수정불가). 자신이 판매중인 책 확인 가능(책 제목, 등록일, 삭제). 자신이 게시판에 작성한 글 확인 가능
 ![Image](https://github.com/user-attachments/assets/a133e355-875f-443e-a49a-f8f189793741)
 
 ## bookregister
