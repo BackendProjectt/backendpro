@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +6,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
+            padding: 40px;
+            background-color: #f5f5f5;
         }
+        <%----------------네이게이션 바----------------%>
         .top-navbar {
             background-color: #007bff;
             color: white;
             padding: 10px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            z-index: 10;
         }
-        .container {
+        .main-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -38,6 +42,7 @@
             text-decoration: underline;
             color: black;
         }
+        <%----------------자세히보기 컨테이너----------------%>
         .detail-container {
             max-width: 800px;
             margin: 40px auto;
@@ -50,6 +55,7 @@
             display: flex;
             gap: 36px;
         }
+        <%----------------책 이미지----------------%>
         .book-img {
             width: 180px;
             height: 250px;
@@ -66,6 +72,7 @@
             display: block;
             object-fit: cover;
         }
+        <%----------------책 정보----------------%>
         .book-info {
             flex: 1;
         }
@@ -88,17 +95,9 @@
             font-size: 22px;
             font-weight: bold;
         }
+        <%----------------책 설명----------------%>
         .section {
             margin-top: 28px;
-        }
-        .state-box {
-            display: inline-block;
-            background: #f6da81;
-            color: #444;
-            font-size: 15px;
-            border-radius: 6px;
-            padding: 2px 14px;
-            margin-bottom: 10px;
         }
         .desc-box {
             font-size: 15px;
@@ -108,6 +107,7 @@
             padding: 12px 16px;
             margin-bottom: 24px;
         }
+        <%----------------버튼----------------%>
         .btn-group {
             display: flex;
             gap: 16px;
@@ -141,16 +141,16 @@
 </head>
 <body>
 	<div class="top-navbar">
-        <div class="container">
+        <div class="main-container">
             <div class="nav-left">
-                <span class="logo">📚 ReRead</span>
+                <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
             </div>
             <div class="nav-right">
                 <a href="login.jsp">로그인</a>
                 <a href="signup.jsp">회원가입</a>
                 <a href="mypage.jsp">마이페이지</a>
                 <a href="cart.jsp">장바구니</a>
-                <a href="book.jsp">책 거래 관리</a>
+                <a href="bookRegister.jsp">책 등록</a>
             </div>
         </div>
     </div>
@@ -179,12 +179,12 @@
                         <td>판매가</td>
                         <td class="price">₩19,000</td>
                     </tr>
+                    
                 </table>
             </div>
         </div>
         
         <div class="section">
-         <div class="state-box">상태: 상</div>
             <div class="desc-box">
                 글쓰기의 기본을 다룬 고전
 				쉽고 알차게 구성한 글쓰기 안내서 [글쓰기 생각쓰기]. 

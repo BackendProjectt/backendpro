@@ -6,11 +6,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
+            padding: 40px;
+            background-color: #f5f5f5;
         }
-        .top-navbar {
+        <%----------------네이게이션 바----------------%>
+        .top-navbar { 
             background-color: #007bff;
             color: white;
             padding: 10px 0;
@@ -42,6 +42,7 @@
             text-decoration: underline;
             color: black;
         }
+        <%----------------작성 컨테이너----------------%>
         .write-container {
             max-width: 900px;
             min-width: 400px;
@@ -112,22 +113,6 @@
             min-height: 500px;
             resize: vertical;
         }
-        button {
-            width: 100%;
-            padding: 16px 0;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 7px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            letter-spacing: 1px;
-            margin-top: 28px;
-        }
-        button:hover {
-            background: #0056b3;
-        }
         @media (max-width: 600px) {
             .write-container {
                 max-width: 98vw;
@@ -144,17 +129,37 @@
                 margin-right: 0;
             }
         }
+        <%----------------버튼----------------%>
+        button {
+            width: 100%;
+            padding: 16px 0;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 28px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="top-navbar">
         <div class="main-container">
             <div class="nav-left">
-                <span class="logo">📚 ReRead</span>
+                <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
             </div>
             <div class="nav-right">
-                <a href="index.jsp">메인 화면</a>
-                <a href="board.jsp">게시판</a>
+                <a href="login.jsp">로그인</a>
+                <a href="signup.jsp">회원가입</a>
+                <a href="mypage.jsp">마이페이지</a>
+                <a href="cart.jsp">장바구니</a>
+                <a href="bookRegister.jsp">책 등록</a>
             </div>
         </div>
     </div>

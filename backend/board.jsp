@@ -6,12 +6,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            padding: 40px;
             background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
         }
+        <%----------------네이게이션 바----------------%>
         .top-navbar {
-            background-color: #007bff;
+            background-color: #007bff; 
             color: white;
             padding: 10px 0;
             position: fixed;
@@ -42,7 +42,8 @@
             text-decoration: underline;
             color: black;
         }
-        .container {
+        <%----------------게시판 컨테이너----------------%>
+        .board-container {
             max-width: 1000px;
             margin: 0 auto;
             background-color: white;
@@ -53,26 +54,6 @@
         }
         h2 {
             margin-bottom: 24px;
-        }
-        .category-tabs {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 18px;
-        }
-        .tab {
-            padding: 6px 24px;
-            font-size: 16px;
-            border-radius: 18px;
-            border: none;
-            background: #f0f0f0;
-            color: #222;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.12s;
-        }
-        .tab.active {
-            background: #007bff;
-            color: #fff;
         }
         table {
             width: 100%;
@@ -94,6 +75,28 @@
         a:hover {
             text-decoration: underline;
         }
+        <%----------------카테고리 탭----------------%>
+        .category-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .tab {
+            padding: 6px 24px;
+            font-size: 16px;
+            border-radius: 18px;
+            border: none;
+            background: #f0f0f0;
+            color: #222;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.12s;
+        }
+        .tab.active {
+            background: #007bff;
+            color: #fff;
+        }
+        <%----------------버튼----------------%>
         .button-container {
             text-align: right;
         }
@@ -122,15 +125,19 @@
 </head>
 <body>
 
-<div class="container">
+<div class="board-container">
+
 	<div class="top-navbar">
         <div class="main-container">
             <div class="nav-left">
-                <span class="logo">📚 ReRead</span>
+                <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
             </div>
             <div class="nav-right">
-                <a href="index.jsp">메인 화면</a>
-                <a href="board.jsp">게시판</a>
+                <a href="login.jsp">로그인</a>
+                <a href="signup.jsp">회원가입</a>
+                <a href="mypage.jsp">마이페이지</a>
+                <a href="cart.jsp">장바구니</a>
+                <a href="bookRegister.jsp">책 등록</a>
             </div>
         </div>
     </div>

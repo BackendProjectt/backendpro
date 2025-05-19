@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>로그인</title>
     <style>
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             min-height: 100vh;
             margin: 0;
@@ -14,6 +13,40 @@
             align-items: center;
             justify-content: center;
         }
+        <%----------------네이게이션 바----------------%>
+        .top-navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            z-index: 10;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-left .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .nav-right a {
+            color: black;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav-right a:hover {
+            text-decoration: underline;
+            color: black;
+        }
+        <%----------------로그인 컨테이너----------------%>
         .login-container {
             width: 360px;
             background: #fff;
@@ -39,24 +72,7 @@
             font-weight: 500;
             font-size: 15px;
         }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 11px 12px;
-            border: 1.5px solid #d6dbe3;
-            border-radius: 5px;
-            background: #fafcff;
-            box-sizing: border-box;
-            transition: border 0.2s, box-shadow 0.2s;
-            font-size: 15px;
-            outline: none;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.03);
-        }
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 2px 8px rgba(0,123,255,0.08);
-        }
+        <%----------------버튼----------------%>
         button {
             width: 100%;
             padding: 12px 0;
@@ -75,6 +91,25 @@
         button:hover {
             background-color: #0056b3;
         }
+        <%----------------기타----------------%>
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1.5px solid #d6dbe3;
+            border-radius: 5px;
+            background: #fafcff;
+            box-sizing: border-box;
+            transition: border 0.2s, box-shadow 0.2s;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.03);
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+        }
         .error {
             color: #e03333;
             text-align: center;
@@ -85,6 +120,20 @@
     </style>
 </head>
 <body>
+	<div class="top-navbar">
+        <div class="main-container">
+            <div class="nav-left">
+                <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
+            </div>
+            <div class="nav-right">
+                <a href="login.jsp">로그인</a>
+                <a href="signup.jsp">회원가입</a>
+                <a href="mypage.jsp">마이페이지</a>
+                <a href="cart.jsp">장바구니</a>
+                <a href="bookRegister.jsp">책 등록</a>
+            </div>
+        </div>
+    </div>
 
     <div class="login-container">
         <h2>로그인</h2>

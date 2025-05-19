@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>마이페이지 - ReRead</title>
+    <title>ReRead 마이페이지</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            padding: 40px;
             background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
         }
-		.top-navbar {
+		<%----------------네이게이션 바----------------%>
+        .top-navbar {
             background-color: #007bff;
             color: white;
             padding: 10px 0;
@@ -42,6 +42,7 @@
             text-decoration: underline;
             color: black;
         }
+        <%----------------마이페이지----------------%>
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -49,18 +50,14 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 60px;
-            
+            margin-top: 60px;   
         }
-
         h2 {
             margin-bottom: 20px;
         }
-
         .section {
             margin-bottom: 30px;
         }
-
         button {
             padding: 8px 15px;
             background-color: #007bff;
@@ -69,31 +66,25 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #0056b3;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
         th, td {
             padding: 10px;
             border-bottom: 1px solid #ccc;
             text-align: left;
         }
-
         th {
             background-color: #f1f1f1;
         }
-
         a {
             color: #007bff;
             text-decoration: none;
         }
-
         a:hover {
             text-decoration: underline;
         }
@@ -103,15 +94,19 @@
 	<div class="top-navbar">
         <div class="main-container">
             <div class="nav-left">
-                <span class="logo">📚 ReRead</span>
+                <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
             </div>
             <div class="nav-right">
-                <a href="index.jsp">메인 화면</a>
+                <a href="login.jsp">로그인</a>
+                <a href="signup.jsp">회원가입</a>
+                <a href="mypage.jsp">마이페이지</a>
+                <a href="cart.jsp">장바구니</a>
+                <a href="bookRegister.jsp">책 등록</a>
             </div>
         </div>
     </div>
 
-	<div class="container">
+<div class="container">
     <h2>마이페이지</h2>
 
     <div class="section">
@@ -128,7 +123,7 @@
             </tr>
             <tr>
                 <td>이름</td>
-                <td><input type="text" name="username" value="홍길동" readonly></td>
+                <td><input type="text" name="username" value="홍길동"></td>
             </tr>
             <tr>
                 <td>비밀번호</td>
@@ -144,38 +139,36 @@
 </div>
 
     <div class="section">
-        <h3>거래 내역</h3>
+        <h3>판매중인 책</h3>
         <table>
             <tr>
                 <th>책 제목</th>
-                <th>가격</th>
-                <th>상태</th>
+                <th>등록일</th>
+                <th>삭제</th>
             </tr>
             <tr>
-                <td><a href="bookdetail.jsp">Java Programming</a></td>
-                <td>15,000원</td>
-                <td>판매 중</td>
-            </tr>
-            <tr>
-                <td><a href="bookdetail.jsp">Spring Boot Guide</a></td>
-                <td>20,000원</td>
-                <td>예약 중</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="section">
-        <h3>거래 내역</h3>
-        <table>
-            <tr>
-                <th>책 제목</th>
-                <th>거래일</th>
-                <th>상태</th>
-            </tr>
-            <tr>
-                <td><a href="bookdetail.jsp">Effective Java</a></td>
+                <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
                 <td>2023-05-01</td>
-                <td>완료</td>
+                <td>
+                <form action="deleteBook.jsp" method="post" style="margin:0;">
+                    <input type="hidden" name="bookid" value="1">
+                    <button type="submit" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
+                        삭제
+                    </button>
+                </form>
+            </td>
+            </tr>
+            <tr>
+                <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
+                <td>2023-05-13</td>
+                <td>
+                <form action="deleteBook.jsp" method="post" style="margin:0;">
+                    <input type="hidden" name="bookid" value="1">
+                    <button type="submit" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
+                        삭제
+                    </button>
+                </form>
+            </td>
             </tr>
         </table>
     </div>

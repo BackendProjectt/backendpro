@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ReRead 중고 책 거래</title>
+    <title>ReRead 검색 결과</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -10,7 +10,7 @@
             background-color: #f5f5f5;
         }
         <%----------------네이게이션 바----------------%>
-        .top-navbar { 
+        .top-navbar {
             background-color: #007bff;
             color: white;
             padding: 10px 0;
@@ -79,27 +79,7 @@
             font-size: 22px;
             font-weight: bold;
             margin: 30px 0 10px 5vw;
-        }
-        <%----------------최근 등록된 도서 카테고리----------------%>
-        .category-tabs {
-            display: flex;
-            gap: 14px;
-            margin: 0 0 12px 5vw;
-        }
-        .category-tab {
-            padding: 4px 16px;
-            border: none;
-            background: none;
-            font-size: 15px;
-            cursor: pointer;
-            color: #444;
-            border-radius: 16px;
-        }
-        .category-tab.active {
-            font-weight: bold;
-            color: #fff;
-            background: #007bff;
-        }        
+        }       
         <%----------------북 카드----------------%>
         .book-card {
             background: white;
@@ -210,14 +190,7 @@
     
     <a href="board.jsp" class="board-link">📌 게시판 바로가기</a>
 
-    <div class="section-title">최근 등록된 도서</div>
-    <div class="tab-bar category-tabs">
-        <button type="button" class="tab" onclick="selectTab('category',0)">전체</button>
-    	<button type="button" class="tab" onclick="selectTab('category',1)">소설</button>
-    	<button type="button" class="tab" onclick="selectTab('category',2)">과학</button>
-    	<button type="button" class="tab" onclick="selectTab('category',3)">문학</button>
-        <button type="button" class="tab" onclick="selectTab('category',4)">종교</button>
-    </div>
+    <div class="section-title">검색 결과</div>
     <div class="book-list">
         <div class="book-card">
         <div class="book-img">
@@ -232,7 +205,7 @@
         <div class="book-img">
         <img src="image/book1.jpg">
     	</div>
-            <h4>책2</h4>
+            <h4>책1</h4>
             <p>₩8,000</p>
              <div class="state-box">상태: 중</div>
             <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
@@ -241,7 +214,7 @@
         <div class="book-img">
         <img src="image/book1.jpg">
     	</div>
-            <h4>책3</h4>
+            <h4>책1</h4>
             <p>₩9,000</p>
              <div class="state-box">상태: 상</div>
             <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
@@ -250,8 +223,8 @@
         <div class="book-img">
         <img src="image/book1.jpg">
     	</div>
-            <h4>책4</h4>
-            <p>₩6,000</p>
+            <h4>책1</h4>
+            <p>₩7,500</p>
              <div class="state-box">상태: 하</div>
             <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
         </div>
@@ -259,65 +232,9 @@
         <div class="book-img">
         <img src="image/book1.jpg">
     	</div>
-            <h4>책5</h4>
+            <h4>책1</h4>
             <p>₩8,000</p>
              <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-    </div>
-
-    <div class="section-title">가격대별</div>
-    <div class="tab-bar price-tabs">
-    <button type="button" class="tab active" onclick="selectTab('price',0)">1천원~3천원</button>
-    <button type="button" class="tab" onclick="selectTab('price',1)">4천원~6천원</button>
-    <button type="button" class="tab" onclick="selectTab('price',2)">7천원~9천원</button>
-    <button type="button" class="tab" onclick="selectTab('price',3)">만원 이상</button>
-    </div>
-    <div class="book-list">
-    
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
-            <h4>책A</h4>
-            <p>₩1,000</p>
-             <div class="state-box">상태: 하</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
-            <h4>책B</h4>
-            <p>₩2,500</p>
-             <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
-            <h4>책C</h4>
-            <p>₩3,000</p>
-            <div class="state-box">상태: 중</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
-            <h4>책D</h4>
-            <p>₩2,000</p>
-             <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
-            <h4>책E</h4>
-            <p>₩1,500</p>
-             <div class="state-box">상태: 중</div>
             <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
         </div>
     </div>
