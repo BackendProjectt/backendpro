@@ -497,6 +497,28 @@
 				<div class="state-box">상태: 상</div>
 				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
 			</div>
+			
+			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
+			<div class="book-card">
+				<div class="book-img">
+					<img src="image/book1.jpg">
+				</div>
+				<h4>책6</h4>
+				<p>₩8,000</p>
+				<div class="state-box">상태: 상</div>
+				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+			</div>
+			
+			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
+			<div class="book-card">
+				<div class="book-img">
+					<img src="image/book1.jpg">
+				</div>
+				<h4>책7</h4>
+				<p>₩4,000</p>
+				<div class="state-box">상태: 하</div>
+				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+			</div>
 		</div>
 	</div>
 
