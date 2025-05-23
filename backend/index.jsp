@@ -420,7 +420,7 @@
         </div>
     </div>
 
-    <div class="header">📚 중고 도서 거래 플랫폼</div>
+    <div class="header">📚 ReRead 중고 책 거래</div>
 
     <div class="search-bar">
         <form action="search.jsp" method="get">
@@ -430,7 +430,7 @@
     </div>
     
     <div class="board-div-link">
-    <a href="board.jsp" class="board-link">📌 게시판 바로가기</a>
+    	<a href="board.jsp" class="board-link">📌 게시판 바로가기</a>
 	</div>
 	
 	

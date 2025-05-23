@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    // 서버에서 전달받는 기존 게시글 정보 예시 (실제로는 DB에서 조회해서 setAttribute 등으로 전달)
+    String postId = request.getParameter("postId") != null ? request.getParameter("postId") : "1";
+    String title = request.getAttribute("title") != null ? (String)request.getAttribute("title") : "기존 제목";
+    String category = request.getAttribute("category") != null ? (String)request.getAttribute("category") : "질문";
+    String content = request.getAttribute("content") != null ? (String)request.getAttribute("content") : "기존 글 내용";
+%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>게시글 작성</title>
-    <style>
-        body {
+<meta charset="UTF-8">
+<title>ReRead 게시글 수정</title>
+	<style>
+		body {
             margin: 0;
             padding: 0;
             background: var(--main-bg);
@@ -173,6 +181,7 @@
     </style>
 </head>
 <body>
+	<!-- 네비게이션 바 -->
     <div class="top-navbar">
         <div class="main-container">
             <div class="nav-left">
@@ -187,25 +196,27 @@
             </div>
         </div>
     </div>
-
-    <div class="write-container">
-        <h2>게시글 작성</h2>
-        <form action="postUpload.jsp" method="post">
+    
+	<div class="write-container">
+        <h2>게시글 수정</h2>
+        <form action="postUpdate.jsp" method="post">
+            <!-- 게시글 식별용 id (숨김) -->
+            <input type="hidden" name="postId" value="<%= postId %>">
             <div class="form-row-horizontal">
                 <label for="title" class="label-title">제목</label>
-                <input type="text" id="title" name="title" maxlength="80" required class="input-title">
+                <input type="text" id="title" name="title" maxlength="80" required class="input-title"
+                       value="<%= title %>">
                 <label for="category" class="label-category">카테고리</label>
                 <select id="category" name="category" required class="select-category">
-                    <option value="">선택</option>
-                    <option value="자유">자유</option>
-                    <option value="질문">질문</option>
-                </select>
+    				<option value="">선택</option>
+    				<option value="자유" <%= "자유".equals(category) ? "selected" : "" %>>자유</option>
+    				<option value="질문" <%= "질문".equals(category) ? "selected" : "" %>>질문</option>
+				</select>
             </div>
             <label for="content" class="content-label">내용</label>
-            <textarea id="content" name="content" required maxlength="2000"></textarea>
-            <button type="submit">작성하기</button>
+            <textarea id="content" name="content" required maxlength="2000"><%= content %></textarea>
+            <button type="submit">수정하기</button>
         </form>
     </div>
 </body>
 </html>
-

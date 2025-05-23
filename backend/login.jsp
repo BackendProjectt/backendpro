@@ -5,8 +5,9 @@
     <title>로그인</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
+            background: var(--main-bg);
+            color: #222;
             min-height: 100vh;
             margin: 0;
             display: flex;
@@ -15,14 +16,15 @@
         }
         <%----------------네이게이션 바----------------%>
         .top-navbar {
-            background-color: #007bff;
+            background: rgba(25, 118, 210, 0.92);
             color: white;
-            padding: 10px 0;
             position: fixed;
             left: 0;
             top: 0;
             width: 100vw;
-            z-index: 10;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
+            backdrop-filter: blur(6px);
         }
         .main-container {
             max-width: 1200px;
@@ -30,21 +32,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
+            height: 62px;
         }
         .nav-left .logo {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(25,118,210,0.16);
         }
         .nav-right a {
-            color: black;
-            margin-left: 20px;
+            color: #fff;
+            margin-left: 28px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.18s;
+        }
+        .nav-right a::after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #ffd600;
+            transition: width 0.18s;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
         }
         .nav-right a:hover {
-            text-decoration: underline;
-            color: black;
+            color: #ffd600;
+        }
+        .nav-right a:hover::after {
+            width: 100%;
         }
         <%----------------로그인 컨테이너----------------%>
         .login-container {
