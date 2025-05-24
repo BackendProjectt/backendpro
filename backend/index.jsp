@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>중고 도서 거래 플랫폼</title>
+    <title>ReRead 중고 책 거래</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root {
@@ -149,19 +149,12 @@
             width: fit-content;
             box-shadow: 0 2px 12px rgba(25,118,210,0.04);
         }
-        .tab-bar {
+        .tab-bar, .category-tabs, .price-tabs {
             display: flex;
-            gap: 0.5em;
-            margin-bottom: 1em;
+            gap: 18px;
+            margin: 0 0 28px 7vw;
         }
-        .tab-bar .tab{
-		    padding: 0.5em 1em;
-		    background-color: #f0f0f0;
-		    border: none;
-		    border-radius: 5px;
-		    cursor: pointer;
-        }
-        .tab, .category-tabs{
+        .tab, .category-tab {
             padding: 9px 30px;
             border: none;
             background: #f3f7fc;
@@ -172,34 +165,19 @@
             cursor: pointer;
             transition: background 0.14s, color 0.14s, box-shadow 0.14s;
             box-shadow: 0 2px 8px rgba(25,118,210,0.04);
-
         }
         .tab.active, .tab:hover, .category-tab.active, .category-tab:hover {
             background: var(--main-blue);
-            background: rgba(25, 118, 210, 0.92);
-            color: white;
+            color: #fff;
             box-shadow: 0 4px 14px rgba(25,118,210,0.11);
         }
         .book-list {
-        	overflow: hidden;
-        	max-height: 0;
-        	transition: max-height 0.5s ease;
             display: flex;
-        	flex-direction: column;
             gap: 32px;
             flex-wrap: wrap;
             justify-content: flex-start;
             padding: 0 7vw;
             margin-bottom: 38px;
-        }
-        .book-list.active {
-        	max-height: 2000PX;
-        	margin: auto;
-        }
-        .book-wonjo{
-			display: flex;           /* 내부 요소들을 가로로 정렬 */
-			flex-wrap: wrap;         /* 너비 초과 시 줄바꿈 허용 */
-			gap: 16px; 
         }
         .book-card {
             background: var(--card-bg);
@@ -207,13 +185,12 @@
             box-shadow: var(--shadow);
             width: 220px;
             padding: 22px 16px 18px 16px;
-            display: block;
+            display: flex;
             flex-direction: column;
             align-items: center;
             transition: box-shadow 0.18s, transform 0.18s;
             position: relative;
             overflow: hidden;
-            margin: 0.5em;
         }
         .book-card::before {
             content: "";
@@ -230,7 +207,6 @@
             box-shadow: 0 8px 32px rgba(25,118,210,0.17);
             transform: translateY(-6px) scale(1.03);
         }
-
         .book-img {
             width: 100%;
             height: 160px;
@@ -245,7 +221,6 @@
             position: relative;
             z-index: 1;
         }
-
         .book-img img {
             max-width: 100%;
             max-height: 100%;
@@ -323,87 +298,14 @@
             .search-bar button { font-size: 13px; padding: 0 12px; }
         }
     </style>
-    
-    
-    
-    
-    
     <script>
-
-    
-        // 탭 클릭 시 실행되는 공통 함수
-        function selectTab(type, index) {
-            // 탭 버튼 선택 및 활성화 처리
-            const tabs = document.querySelectorAll(`.tab-bar.${type}-tabs .tab`);
-            tabs.forEach((tab, i) => {
-                tab.classList.toggle('active', i === index);
-            });
-
-            
-
-            
-            
-            // 카테고리별 도서 필터링
-            if (type === 'category') {
-                const categories = ['전체', '소설', '과학', '문학'];
-                const selectedCategory = categories[index];
-
-                const books = document.querySelectorAll('#categoryBooks .book-wonjo .book-card');
-                books.forEach(book => {
-                    const bookCategory = book.getAttribute('data-category');
-                    book.style.display =
-                        selectedCategory === '전체' || bookCategory === selectedCategory
-                            ? 'block'
-                            : 'none';
-				});
-			}
-
-            
-            
-            
-            
-            // 가격대별 도서 필터링
-            if (type === 'price') {
-                const priceRanges = [
-                    { min: 1000, max: 3000 },
-                    { min: 4000, max: 6000 },
-                    { min: 7000, max: 9000 },
-                    { min: 10000, max: Infinity }
-                ];
-                const selectedRange = priceRanges[index];
-
-                const books = document.querySelectorAll('#priceBooks .book-wonjo .book-card');
-                books.forEach(book => {
-                    const price = parseInt(book.getAttribute('data-prices'));
-                    book.style.display =
-                        price >= selectedRange.min && price <= selectedRange.max
-                            ? 'block'
-                            : 'none';
-                });
-            }
+        function selectTab(group, idx) {
+            var tabs = document.querySelectorAll('.'+group+'-tabs .tab');
+            for (var i = 0; i < tabs.length; i++)
+                tabs[i].className = 'tab' + (i === idx ? ' active' : '');
         }
-
-	        // 섹션 제목 클릭 시 펼치기/접기 동작
-	        document.addEventListener('DOMContentLoaded', function () {
-	            document.querySelectorAll('.section-title').forEach(title => {
-	                const list = title.nextElementSibling;
-	                if (!list || !list.classList.contains('book-list')) return;
-	
-	                title.addEventListener('click', () => {
-	                    list.classList.toggle('active');
-	                });
-	            });
-	        });
-        
     </script>
-    
-    
-    
-    
 </head>
-
-
-
 <body>
     <div class="top-navbar">
         <div class="main-container">
@@ -430,207 +332,167 @@
     </div>
     
     <div class="board-div-link">
-    	<a href="board.jsp" class="board-link">📌 게시판 바로가기</a>
+    <a href="board.jsp" class="board-link">📌 게시판 바로가기</a>
 	</div>
 	
-	
-	
-	
-	<!-- 최근 등록된 도서 부분 코드 -->
-	<div class="section-title" data-target="recentBooks">최근 등록된 도서</div>
-	
-	<!-- 도서 및 카테고리를 한 영역에 묶기 위한 div -->
-	<div class="book-list" id="recentBooks">
-		<div class="book-wonjo">
-		
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-		        <div class="book-img">
-		            <img src="image/book1.jpg">
-		        </div>
-		        <h4>책1</h4>
-		        <p>₩10,000</p>
-		        <div class="state-box">상태: 상</div>
-		        <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-	        </div>
-	        
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-	            <div class="book-img">
-					<img src="image/book1.jpg">
-	            </div>
-	            <h4>책2</h4>
-	            <p>₩8,000</p>
-				<div class="state-box">상태: 중</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책3</h4>
-				<p>₩9,000</p>
-				<div class="state-box">상태: 상</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책4</h4>
-				<p>₩6,000</p>
-				<div class="state-box">상태: 하</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책5</h4>
-				<p>₩8,000</p>
-				<div class="state-box">상태: 상</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책6</h4>
-				<p>₩8,000</p>
-				<div class="state-box">상태: 상</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<div class="book-card">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책7</h4>
-				<p>₩4,000</p>
-				<div class="state-box">상태: 하</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-		</div>
-	</div>
+    <div class="section-title">최근 등록된 도서</div>
+    <div class="book-list">
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책1</h4>
+            <p>₩10,000</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책2</h4>
+            <p>₩8,000</p>
+            <div class="state-box">상태: 중</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책3</h4>
+            <p>₩9,000</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책4</h4>
+            <p>₩6,000</p>
+            <div class="state-box">상태: 하</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책5</h4>
+            <p>₩8,000</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+    </div>
 
+    <div class="section-title">카테고리별 도서</div>
+    <div class="tab-bar category-tabs">
+        <button type="button" class="tab" onclick="selectTab('category',0)">전체</button>
+        <button type="button" class="tab" onclick="selectTab('category',1)">소설</button>
+        <button type="button" class="tab" onclick="selectTab('category',2)">과학</button>
+        <button type="button" class="tab" onclick="selectTab('category',3)">문학</button>
+        <button type="button" class="tab" onclick="selectTab('category',4)">종교</button>
+    </div>
+    <div class="book-list">
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책A</h4>
+            <p>₩1,000</p>
+            <div class="state-box">상태: 하</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책B</h4>
+            <p>₩2,500</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책C</h4>
+            <p>₩3,000</p>
+            <div class="state-box">상태: 중</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책D</h4>
+            <p>₩2,000</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책E</h4>
+            <p>₩1,500</p>
+            <div class="state-box">상태: 중</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+    </div>
 
-
-
-	<!-- 카테고리별 도서 부분 코드 -->
-	<div class="section-title" data-target="categoryBooks">카테고리별 도서</div>
-	
-	<!-- 도서 및 카테고리를 한 영역에 묶기 위한 div -->
-	<div class="book-list" id="categoryBooks">
-	
-		<!-- 여러가지의 카테고리를 나눈 탭이 들어가있는 div -->
-		<div class="tab-bar category-tabs">
-			<button type="button" class="tab" onclick="selectTab('category',0)">전체</button>
-			<button type="button" class="tab" onclick="selectTab('category',1)">소설</button>
-			<button type="button" class="tab" onclick="selectTab('category',2)">과학</button>
-			<button type="button" class="tab" onclick="selectTab('category',3)">문학</button>
-		</div>
-		<!-- category-tabs와 book-card들을 분리시겨 두 가지 종류만 세로로 배치하기 위한 div (book-wonjo)CSS는 아무것도 없다. -->
-		<div class="book-wonjo">
-		
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<!-- 책A: 전체, 소설 -->
-			<div class="book-card" data-category="소설">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책A</h4>
-				<p>₩1,000</p>
-				<div class="state-box">상태: 하</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<!-- 책A: 전체, 문학 -->
-			<div class="book-card" data-category="문학">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책B</h4>
-				<p>₩2,500</p>
-				<div class="state-box">상태: 상</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-			
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-			<!-- 책A: 전체, 문학 -->
-			<div class="book-card" data-category="문학"">
-				<div class="book-img">
-					<img src="image/book1.jpg">
-				</div>
-				<h4>책C</h4>
-				<p>₩3,000</p>
-				<div class="state-box">상태: 중</div>
-				<button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-			</div>
-		</div>
-	</div>
-
-
-
-
-	<!-- 가격대별 도서 부분 코드 -->
-    <div class="section-title" data-target="priceBooks">가격대별 도서</div>
-    
-	<!-- 도서 및 카테고리를 한 영역에 묶기 위한 div -->
-    <div class="book-list" id="priceBooks">
-    
-		<!-- 여러가지의 가격으로 나눈 탭이 들어가있는 div -->
-        <div class="tab-bar price-tabs">
-        	<button type="button" class="tab" onclick="selectTab('price',0)">1천원~3천원</button>
-       		<button type="button" class="tab" onclick="selectTab('price',1)">4천원~6천원</button>
-       		<button type="button" class="tab" onclick="selectTab('price',2)">7천원~9천원</button>
-        	<button type="button" class="tab" onclick="selectTab('price',3)">만원 이상</button>
-    	</div>
-		<!-- price-tabs와 book-card들을 분리시겨 두 가지 종류만 세로로 배치하기 위한 div (book-wonjo)CSS는 아무것도 없다. -->
-    	<div class="book-wonjo">
-    	
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-	        <div class="book-card" data-prices="1000">
-	            <div class="book-img">
-	                <img src="image/book1.jpg">
-	            </div>
-	            <h4>책A</h4>
-	            <p>₩1,000</p>
-	            <div class="state-box">상태: 하</div>
-	            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-	        </div>
-	        
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-	        <div class="book-card" data-prices="2500">
-	            <div class="book-img">
-	                <img src="image/book1.jpg">
-	            </div>
-	            <h4>책B</h4>
-	            <p>₩2,500</p>
-	            <div class="state-box">상태: 상</div>
-	            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-	        </div>
-	        
-			<!-- 거래하기 위해서 올린 하나의 도서 품목 -->
-	        <div class="book-card" data-prices="3000">
-	            <div class="book-img">
-	                <img src="image/book1.jpg">
-	            </div>
-	            <h4>책C</h4>
-	            <p>₩3,000</p>
-	            <div class="state-box">상태: 중</div>
-	            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-	        </div>
-    	</div>
+    <div class="section-title">가격대별 도서</div>
+    <div class="tab-bar price-tabs">
+        <button type="button" class="tab active" onclick="selectTab('price',0)">1천원~3천원</button>
+        <button type="button" class="tab" onclick="selectTab('price',1)">4천원~6천원</button>
+        <button type="button" class="tab" onclick="selectTab('price',2)">7천원~9천원</button>
+        <button type="button" class="tab" onclick="selectTab('price',3)">만원 이상</button>
+    </div>
+    <div class="book-list">
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책A</h4>
+            <p>₩1,000</p>
+            <div class="state-box">상태: 하</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책B</h4>
+            <p>₩2,500</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책C</h4>
+            <p>₩3,000</p>
+            <div class="state-box">상태: 중</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책D</h4>
+            <p>₩2,000</p>
+            <div class="state-box">상태: 상</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
+        <div class="book-card">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+            </div>
+            <h4>책E</h4>
+            <p>₩1,500</p>
+            <div class="state-box">상태: 중</div>
+            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
+        </div>
     </div>
 </body>
 </html>
