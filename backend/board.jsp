@@ -74,6 +74,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 60px;
+            min-height: 500px;
+            
         }
         h2 {
             margin-bottom: 24px;
@@ -82,6 +84,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            min-height: 180px; 
+            table-layout: fixed;
         }
         th, td {
             padding: 10px;
@@ -106,8 +110,7 @@
             font-size: 16px;
             border-radius: 18px;
             border: none;
-            background: #f0f0f0;
-            color: #222;
+            background: #939393;
             font-weight: 500;
             cursor: pointer;
             transition: background 0.12s;
@@ -134,13 +137,23 @@
         }
     </style>
     <script>
-        function selectTab(idx) {
-            var tabs = document.querySelectorAll('.tab');
-            tabs.forEach(function(tab, i){
-                tab.className = 'tab' + (i===idx?' active':'');
-            });
-            // 실제로는 카테고리별 목록 출력, 현재는 UI만 구현
-        }
+    function selectTab(idx) {
+        var tabs = document.querySelectorAll('.tab');
+        tabs.forEach(function(tab, i){
+            tab.className = 'tab' + (i===idx?' active':'');
+        });
+        // 카테고리 필터링
+        var categories = ["자유", "질문"];
+        var selected = categories[idx];
+        var rows = document.querySelectorAll('#post-list tr');
+        rows.forEach(function(row) {
+            if (row.getAttribute('data-category') === selected) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
     </script>
 </head>
 <body>
@@ -180,29 +193,60 @@
             <th>작성자</th>
             <th>작성일</th>
         </tr>
-
-        <tr>
+		
+		<tbody id="post-list">
+        <tr data-category="자유">
             <td>1</td>
             <td>자유</td>
             <td><a href="postView.jsp?postId=1">ReRead</a></td>
             <td>홍길동</td>
             <td>2025-05-10</td>
         </tr>
-        <tr>
+        <tr data-category="질문">
             <td>2</td>
             <td>질문</td>
             <td><a href="postView.jsp?postId=2">책 추천 부탁드립니다!</a></td>
             <td>김철수</td>
             <td>2025-05-09</td>
         </tr>
-        <tr>
+        <tr data-category="질문">
             <td>3</td>
             <td>질문</td>
             <td><a href="postView.jsp?postId=3">Spring</a></td>
             <td>이영희</td>
             <td>2025-05-08</td>
         </tr>
+        <tr data-category="자유">
+            <td>4</td>
+            <td>자유</td>
+            <td><a href="postView.jsp?postId=4">ReRead</a></td>
+            <td>홍길동</td>
+            <td>2025-05-10</td>
+        </tr>
+        <tr data-category="질문">
+            <td>5</td>
+            <td>질문</td>
+            <td><a href="postView.jsp?postId=5">책 추천 부탁드립니다!</a></td>
+            <td>김철수</td>
+            <td>2025-05-09</td>
+        </tr>
+        <tr data-category="자유">
+            <td>6</td>
+            <td>자유</td>
+            <td><a href="postView.jsp?postId=6">ReRead</a></td>
+            <td>홍길동</td>
+            <td>2025-05-10</td>
+        </tr>
+        <tr data-category="질문">
+            <td>7</td>
+            <td>질문</td>
+            <td><a href="postView.jsp?postId=7">책 추천 부탁드립니다!</a></td>
+            <td>김철수</td>
+            <td>2025-05-09</td>
+        </tr>
+        </tbody>
     </table>
+    
 </div>
 
 </body>

@@ -3,21 +3,22 @@
 <html>
 <head>
     <title>ReRead 검색 결과</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root {
             --main-blue: #1976d2;
             --main-blue-dark: #1257a8;
             --main-bg: #f6f8fa;
             --card-bg: #fff;
-            --gray: #888;
-            --shadow: 0 4px 24px rgba(30, 144, 255, 0.13);
+            /*--gray: #888;*/
+            /*--shadow: 0 4px 24px rgba(30, 144, 255, 0.13);*/
         }
         html, body {
             margin: 0;
             padding: 0;
-            background: var(--main-bg);
             font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
             color: #222;
+            background: var(--main-bg);
         }
         .top-navbar {
             background: rgba(25, 118, 210, 0.92);
@@ -148,71 +149,31 @@
             width: fit-content;
             box-shadow: 0 2px 12px rgba(25,118,210,0.04);
         }
-        .tab-bar {
-            display: flex;
-            gap: 0.5em;
-            margin-bottom: 1em;
-        }
-        .tab-bar .tab{
-		    padding: 0.5em 1em;
-		    background-color: #f0f0f0;
-		    border: none;
-		    border-radius: 5px;
-		    cursor: pointer;
-        }
-        .tab, .category-tabs{
-            padding: 9px 30px;
-            border: none;
-            background: #f3f7fc;
-            color: var(--main-blue);
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 22px;
-            cursor: pointer;
-            transition: background 0.14s, color 0.14s, box-shadow 0.14s;
-            box-shadow: 0 2px 8px rgba(25,118,210,0.04);
-
-        }
-        .tab.active, .tab:hover, .category-tab.active, .category-tab:hover {
-            background: var(--main-blue);
-            background: rgba(25, 118, 210, 0.92);
-            color: white;
-            box-shadow: 0 4px 14px rgba(25,118,210,0.11);
-        }
         .book-list {
-        	overflow: hidden;
-        	max-height: 0;
-        	transition: max-height 0.5s ease;
             display: flex;
-        	flex-direction: column;
             gap: 32px;
             flex-wrap: wrap;
             justify-content: flex-start;
             padding: 0 7vw;
             margin-bottom: 38px;
         }
-        .book-list.active {
-        	max-height: 2000PX;
-        	margin: auto;
-        }
-        .book-wonjo{
-			display: flex;           /* 내부 요소들을 가로로 정렬 */
-			flex-wrap: wrap;         /* 너비 초과 시 줄바꿈 허용 */
-			gap: 16px; 
-        }
         .book-card {
-            background: var(--card-bg);
             border-radius: 16px;
             box-shadow: var(--shadow);
-            width: 220px;
+            width: auto;
+            height: auto;
             padding: 22px 16px 18px 16px;
-            display: block;
+            display: flex;
             flex-direction: column;
-            align-items: center;
             transition: box-shadow 0.18s, transform 0.18s;
             position: relative;
             overflow: hidden;
-            margin: 0.5em;
+			background: var(--card-bg);
+            text-decoration: none;   /* 링크 밑줄 제거 */
+    		cursor: pointer;
+    		line-height: 1;
+   			vertical-align: top;
+    		white-space: normal;
         }
         .book-card::before {
             content: "";
@@ -222,17 +183,16 @@
             top: -40%;
             width: 180%;
             height: 60%;
-            background: linear-gradient(120deg, #e3f0fb 0, transparent 100%);
+            /*background: linear-gradient(120deg, #e3f0fb 0, transparent 100%);*/
             z-index: 0;
         }
         .book-card:hover {
             box-shadow: 0 8px 32px rgba(25,118,210,0.17);
             transform: translateY(-6px) scale(1.03);
         }
-
         .book-img {
-            width: 100%;
-            height: 160px;
+            width: 180px;
+            height: 240px;
             background: #e3f0fb;
             border-radius: 10px;
             margin-bottom: 14px;
@@ -243,8 +203,8 @@
             box-shadow: 0 2px 8px rgba(25,118,210,0.08);
             position: relative;
             z-index: 1;
+            position: relative; /* 새로 추가 */
         }
-
         .book-img img {
             max-width: 100%;
             max-height: 100%;
@@ -269,41 +229,26 @@
             color: var(--main-blue);
             font-weight: bold;
         }
-        .book-card button {
-            margin-top: 12px;
-            padding: 9px 26px;
-            background: linear-gradient(90deg, #1976d2 60%, #1257a8 100%);
-            color: #fff;
-            border: none;
-            border-radius: 9px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(25,118,210,0.08);
-            transition: background 0.14s, box-shadow 0.14s;
-            z-index: 1;
-        }
-        .book-card button:hover {
-            background: linear-gradient(90deg, #1257a8 0%, #1976d2 100%);
-            box-shadow: 0 4px 14px rgba(25,118,210,0.18);
-        }
         .state-box {
             display: inline-block;
             font-size: 15px;
             border-radius: 8px;
             padding: 3px 16px;
-            margin-bottom: 10px;
             font-weight: bold;
             background: linear-gradient(90deg, #ffe082 60%, #ffd54f 100%);
             color: #7c6a00;
             box-shadow: 0 1px 4px rgba(255,214,79,0.09);
             letter-spacing: 1px;
+            line-height: 1.4; 
+            position: absolute;       /* 새로 추가 */
+    		top: 5px;                /* 원하는 만큼 간격 조절 (예: 10px) */
+    		left: 5px;               /* 원하는 만큼 간격 조절 (예: 10px) */
         }
         /* Responsive */
         @media (max-width: 1100px) {
             .main-container { padding: 0 10px; }
             .book-list { padding: 0 2vw; gap: 20px; }
-            .section-title, .category-tabs, .price-tabs { margin-left: 2vw; }
+            .section-title { margin-left: 2vw; }
         }
         @media (max-width: 800px) {
             .header { font-size: 28px; margin-top: 80px; }
@@ -322,33 +267,6 @@
             .search-bar button { font-size: 13px; padding: 0 12px; }
         }
     </style>
-    
-    
-    
-    
-    
-    <script>
-        // 탭 클릭 시 실행되는 공통 함수
-        function selectTab(type, index) {
-            // 탭 버튼 선택 및 활성화 처리
-            const tabs = document.querySelectorAll(`.tab-bar.${type}-tabs .tab`);
-            tabs.forEach((tab, i) => {
-                tab.classList.toggle('active', i === index);
-            });
-        }
-	        // 섹션 제목 클릭 시 펼치기/접기 동작
-	        document.addEventListener('DOMContentLoaded', function () {
-	            document.querySelectorAll('.section-title').forEach(title => {
-	                const list = title.nextElementSibling;
-	                if (!list || !list.classList.contains('book-list')) return;
-	
-	                title.addEventListener('click', () => {
-	                    list.classList.toggle('active');
-	                });
-	            });
-	        });
-        
-    </script>
 </head>
 <body>
     <div class="top-navbar">
@@ -381,54 +299,46 @@
 
     <div class="section-title">검색 결과</div>
     <div class="book-list">
-     	<div class="book-wonjo">
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
+    	<a href="bookdetail.jsp" class="book-card" data-category="문학" data-prices="10000">
+            <div class="book-img">
+            	<div class="state-box">상태: 상</div>
+                <img src="image/book1.jpg">
+            </div>
             <h4>책1</h4>
             <p>₩10,000</p>
-            <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
+        </a>
+        <a href="bookdetail.jsp" class="book-card" data-category="문학" data-prices="8000">
+            <div class="book-img">
+            	<div class="state-box">상태: 중</div>
+                <img src="image/book1.jpg">
+            </div>
             <h4>책1</h4>
             <p>₩8,000</p>
-             <div class="state-box">상태: 중</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
+        </a>
+        <a href="bookdetail.jsp" class="book-card" data-category="문학" data-prices="9000">
+            <div class="book-img">
+            	<div class="state-box">상태: 상</div>
+                <img src="image/book1.jpg">
+            </div>
             <h4>책1</h4>
             <p>₩9,000</p>
-             <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
+        </a>
+        <a href="bookdetail.jsp" class="book-card" data-category="문학" data-prices="6000">
+            <div class="book-img">
+            	<div class="state-box">상태: 하</div>
+                <img src="image/book1.jpg">
+            </div>
             <h4>책1</h4>
-            <p>₩7,500</p>
-             <div class="state-box">상태: 하</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        <div class="book-card">
-        <div class="book-img">
-        <img src="image/book1.jpg">
-    	</div>
+            <p>₩6,000</p>
+        </a>
+        <a href="bookdetail.jsp" class="book-card" data-category="문학" data-prices="8000">
+            <div class="book-img">
+                <img src="image/book1.jpg">
+                <div class="state-box">상태: 상</div>
+            </div>
             <h4>책1</h4>
             <p>₩8,000</p>
-             <div class="state-box">상태: 상</div>
-            <button onclick="location.href='bookdetail.jsp'">자세히 보기</button>
-        </div>
-        
-        </div>
+        </a>
     </div>
 </body>
 </html>
