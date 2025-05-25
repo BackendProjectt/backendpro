@@ -5,7 +5,11 @@
     <title>책 상세 정보</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
+            color: #222;
+            padding: 25px;
             background: #f4f4f4;
         }
         .top-navbar {
@@ -232,7 +236,8 @@
                     <span class="info-label">판매가</span>
                     <span class="price">₩19,000</span> <br>
                     <span class="info-label">배송비</span> 무료<br>
-                    <span class="info-label">판매자 ID</span>  <a href="idReview.jsp" style="text-decoration:none; font-weight: bold;">hong123</a><br>
+                    <span class="info-label">판매자 ID</span> hong123
+                    <a href="idReview.jsp?seller=hong123" target="_blank" style="text-decoration:none; font-weight: bold;">[리뷰보기]</a><br>
                     <span class="state-box">상태: 상</span><br>
                 </div>
             </div>
@@ -252,7 +257,7 @@
         <div class="total-price">총 결제 금액 : <b>₩19,000</b></div>
         <div class="btn-group">
             <button class="btn btn-cart" onclick="location.href='cart.jsp'">장바구니에 담기</button>
-    		<button class="btn btn-buy" onclick="location.href='review.jsp'">바로 구매</button>
+    		<button class="btn btn-buy" onclick="window.open('review.jsp', 'reviewPopup', 'width=550,height=660,resizable=no,scrollbars=yes'); return false;">바로 구매</button>
         </div>
     </div>
 </body>

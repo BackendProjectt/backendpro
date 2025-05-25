@@ -15,7 +15,7 @@
 		body {
             margin: 0;
             padding: 0;
-            background: var(--main-bg);
+            background: #f4f4f4;
             font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
             color: #222;
             padding: 40px;

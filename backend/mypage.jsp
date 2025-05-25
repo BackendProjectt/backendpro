@@ -10,6 +10,7 @@
             font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
             color: #222;
             padding: 40px;
+            background: #f4f4f4;
         }
         .top-navbar {
             background: rgba(25, 118, 210, 0.92);

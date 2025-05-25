@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
-            background: var(--main-bg);
+            background: #f4f4f4;
             color: #222;
             min-height: 100vh;
             margin: 0;
