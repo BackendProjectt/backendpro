@@ -252,7 +252,7 @@
     <div class="bottom-bar">
         <div class="total-price">총 결제 금액 : <b>₩46,000</b></div>
         <div class="btn-group">
-    		<button class="btn btn-buy" onclick="window.open('review.jsp', 'reviewPopup', 'width=550,height=660,resizable=no,scrollbars=yes'); return false;">바로 구매</button>
+    		<button class="btn btn-buy" onclick="location.href='complete.jsp'">바로 구매</button>
         </div>
     </div>
     
