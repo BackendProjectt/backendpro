@@ -123,6 +123,23 @@
             margin-top: 2px;
             line-height: 1.7;
         }
+        .back-button {
+            display: inline-block;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 22px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: background-color 0.25s;
+        }
+        .back-button:hover {
+            background-color: #135ba1;
+        }
         @media (max-width: 700px) {
             .outer-card { max-width: 98vw; padding: 14px 0 20px 0;}
             .review-list { width: 97%; }
@@ -169,6 +186,9 @@
                 <div class="review-meta">구매자: <b>tester</b> | 작성일: 2025-05-19</div>
                 <div class="review-comment">책 상태는 좋았으나 배송이 조금 느렸어요.</div>
             </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="back-button" onclick="history.back()">← 이전 화면으로</button>
         </div>
     </div>
 </body>
