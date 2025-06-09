@@ -112,7 +112,7 @@
     </style>
 </head>
 <body>
-	<div class="top-navbar">
+    <div class="top-navbar">
         <div class="main-container">
             <div class="nav-left">
                 <a href="index.jsp" class="logo" style="text-decoration:none; color:inherit;">📚 ReRead</a>
@@ -127,92 +127,93 @@
         </div>
     </div>
 
-<div class="container">
-    <h2>마이페이지</h2>
+    <div class="container">
+        <h2>마이페이지</h2>
 
-    <div class="section">
-    <h3>내 회원정보 수정</h3>
-    <form action="updateMember.jsp" method="post">
-        <table>
-            <tr>
-                <td>가입일</td>
-                <td><input type="text" name="date" value="2023-01-01" readonly></td>
-            </tr>
-            <tr>
-                <td>아이디</td>
-                <td><input type="text" name="userid" value="hong123" readonly></td>
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td><input type="text" name="username" value="홍길동"></td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="password" value="password"></td>
-            </tr>
-            <tr>
-                <td>이메일</td>
-                <td><input type="email" name="email" value="hong@google.com"></td>
-            </tr>
-        </table>
-        <button type="submit" style="margin-top:16px;">저장</button>
-    </form>
-</div>
-
-    <div class="section">
-        <h3>판매중인 책</h3>
-        <table>
-            <tr>
-                <th>책 제목</th>
-                <th>등록일</th>
-                <th>삭제</th>
-            </tr>
-            <tr>
-                <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
-                <td>2023-05-01</td>
-                <td>
-                <form action="deleteBook.jsp" method="post" style="margin:0;">
-                    <input type="hidden" name="bookid" value="1">
-                    <button type="submit" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
-                        삭제
-                    </button>
-                </form>
-            </td>
-            </tr>
-            <tr>
-                <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
-                <td>2023-05-13</td>
-                <td>
-                <form action="deleteBook.jsp" method="post" style="margin:0;">
-                    <input type="hidden" name="bookid" value="1">
-                    <button type="submit" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
-                        삭제
-                    </button>
-                </form>
-            </td>
-            </tr>
-        </table>
+        <div class="section">
+        <h3>내 회원정보 수정</h3>
+        <form action="updateMember.jsp" method="post">
+            <table>
+                <tr>
+                    <td>가입일</td>
+                    <td><input type="text" name="date" value="2023-01-01" readonly></td>
+                </tr>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text" name="userid" value="hong123" readonly></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="username" value="홍길동"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" name="password" value="password"></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td><input type="email" name="email" value="hong@google.com"></td>
+                </tr>
+            </table>
+            <button type="submit" style="margin-top:16px;">저장</button>
+        </form>
     </div>
 
-    <div class="section">
-        <h3>작성한 글 목록</h3>
-        <table>
-            <tr>
-                <th>제목</th>
-                <th>작성일</th>
-            </tr>
-            <tr>
-                <td><a href="postView.jsp?postId=1">Spring Boot 질문 있습니다!</a></td>
-                <td>2023-04-21</td>
-            </tr>
-            <tr>
-                <td><a href="postView.jsp?postId=1">책 거래 후기입니다.</a></td>
-                <td>2023-04-22</td>
-            </tr>
-        </table>
-    </div>
-</div>
+        <div class="section">
+            <h3>판매중인 책</h3>
+            <table id="bookTable">
+                <tr>
+                    <th>책 제목</th>
+                    <th>등록일</th>
+                    <th>삭제</th>
+                </tr>
+                <tr>
+                    <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
+                    <td>2023-05-01</td>
+                    <td>
+                        <button onclick="deleteRow(this)" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
+                            삭제
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="bookdetail.jsp">글쓰기 생각쓰기</a></td>
+                    <td>2023-05-13</td>
+                    <td>
+                        <button onclick="deleteRow(this)" style="padding:6px 13px; background-color:#dc3545; color:white; border-radius:4px; font-size:13px; cursor:pointer;">
+                            삭제
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
+        <div class="section">
+            <h3>작성한 글 목록</h3>
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <th>작성일</th>
+                </tr>
+                <tr>
+                    <td><a href="postView.jsp?postId=1">Spring Boot 질문 있습니다!</a></td>
+                    <td>2023-04-21</td>
+                </tr>
+                <tr>
+                    <td><a href="postView.jsp?postId=1">책 거래 후기입니다.</a></td>
+                    <td>2023-04-22</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function deleteRow(btn) {
+            if(confirm('정말 삭제하시겠습니까?')) {
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        }
+    </script>
 </body>
 </html>
-
