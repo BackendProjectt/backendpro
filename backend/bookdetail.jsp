@@ -235,7 +235,6 @@
                     <span class="info-label">카테고리</span> 문학<br>
                     <span class="info-label">판매가</span>
                     <span class="price">₩19,000</span> <br>
-                    <span class="info-label">배송비</span> 무료<br>
                     <span class="info-label">판매자 ID</span> hong123
                     <a href="idReview.jsp?seller=hong123" style="text-decoration:none; font-weight: bold;">[리뷰보기]</a><br>
                     <span class="state-box">상태: 상</span><br>
