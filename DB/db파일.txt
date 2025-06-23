@@ -93,7 +93,7 @@ CREATE TABLE cart (
 );
 
 -- 테스트 데이터 삽입
-INSERT INTO users (user_id, username, password, email) VALUES 
+usersINSERT INTO users (user_id, username, password, email) VALUES 
 ('hong123', '홍길동', 'password123', 'hong@example.com'),
 ('kim456', '김철수', 'password456', 'kim@example.com'),
 ('lee789', '이영희', 'password789', 'lee@example.com');
